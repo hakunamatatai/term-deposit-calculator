@@ -40,8 +40,3 @@ validator - parameter validator
 Main - Program entry point
 
 test - Unit tests
-
-
-# Help
-You can refer our help documents [here](https://help.geektrust.com)
-You can read build instructions [here](https://github.com/geektrust/coding-problem-artefacts/tree/master/Java)
