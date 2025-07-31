@@ -14,21 +14,28 @@ public class TermDepositCLI {
 
         System.out.println("=== Term Deposit Calculator ===");
 
-        //read input
-        double startDepositAmount = readPositiveDouble(sc, "Enter the start deposit amount (e.g. 10000): ");
+        boolean keepRunning = true;
+        while (keepRunning) {
+            //read input
+            double startDepositAmount = readPositiveDouble(sc, "Enter the start deposit amount (e.g. 10000): ");
 
-        double rate = readPositiveDouble(sc, "Enter the annual interest rate (e.g. 1.1 for 1.1%): ") / 100.0;
+            double rate = readPositiveDouble(sc, "Enter the annual interest rate (e.g. 1.1 for 1.1%): ") / 100.0;
 
-        int years = readPositiveInt(sc, "Enter the investment term in years (e.g. 3): ");
+            int years = readPositiveInt(sc, "Enter the investment term in years (e.g. 3): ");
 
-        InterestPaymentType frequency = readInterestPaymentType(sc);
+            InterestPaymentType frequency = readInterestPaymentType(sc);
 
 
-        TermDepositInput input = new TermDepositInput(startDepositAmount, rate, years, frequency);
+            TermDepositInput input = new TermDepositInput(startDepositAmount, rate, years, frequency);
 
-        TermDepositCalculator calc = new TermDepositCalculator();
-        double result = calc.calculateDepositBalance(input);
-        System.out.printf("Final balance after %d years: $%.2f\n", years, result);
+            TermDepositCalculator calc = new TermDepositCalculator();
+            double result = calc.calculateDepositBalance(input);
+
+            System.out.printf("Final balance after %d years: $%.2f\n", years, result);
+            keepRunning = checkIfContinue(sc);
+        }
+
+        System.out.println("Term Deposit Calculator End.");
     }
 
 
@@ -70,4 +77,20 @@ public class TermDepositCLI {
             }
         }
     }
+
+
+    private static boolean checkIfContinue(Scanner sc) {
+        while (true) {
+            System.out.print("Do you want to calculate another term deposit? (Y/N): ");
+            String answer = sc.nextLine().trim().toUpperCase();
+            if ("Y".equals(answer)) {
+                return true;
+            } else if ("N".equals(answer)) {
+                return false;
+            } else {
+                System.out.println("Please enter Y (yes) or N (no).");
+            }
+        }
+    }
+
 }

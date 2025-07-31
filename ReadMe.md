@@ -2,7 +2,7 @@
 
 # Pre-requisites
 * Java 1.8/1.11
-* Maven 3.6+
+* Maven 3.9
 * Junit 5 (import automatically)
 
 
