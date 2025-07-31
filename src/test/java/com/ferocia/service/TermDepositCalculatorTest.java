@@ -30,7 +30,6 @@ public class TermDepositCalculatorTest {
                 InterestPaymentType.MONTHLY
         );
         double result = new TermDepositCalculator().calculateDepositBalance(input);
-        // 10000 * (1 + 0.011/12)^(12*3) ≈ 10334.10
         assertEquals(10335.35, result, 0.01);
     }
 
@@ -43,7 +42,6 @@ public class TermDepositCalculatorTest {
                 InterestPaymentType.QUARTERLY
         );
         double result = new TermDepositCalculator().calculateDepositBalance(input);
-        // 10000 * (1 + 0.011/4)^(4*3) ≈ 10333.82
         assertEquals(10335.04, result, 0.01);
     }
 
@@ -56,7 +54,6 @@ public class TermDepositCalculatorTest {
                 InterestPaymentType.ANNUALLY
         );
         double result = new TermDepositCalculator().calculateDepositBalance(input);
-        // 10000 * (1 + 0.011)^3 ≈ 10333.66
         assertEquals(10333.64, result, 0.01);
     }
 
@@ -69,7 +66,6 @@ public class TermDepositCalculatorTest {
                 InterestPaymentType.AT_MATURITY
         );
         double result = new TermDepositCalculator().calculateDepositBalance(input);
-        // 10000 * (1 + 0.011*3) = 10330
         assertEquals(10330.00, result, 0.01);
     }
 
